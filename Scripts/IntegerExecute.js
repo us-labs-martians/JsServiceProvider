@@ -1,15 +1,15 @@
 metadata = {
-    "systemName":"IntegerExecute",
-    "displayName":"IntegerExecute",
-    "description":"IntegerExecute"
+    "systemName":"JsspITest_IntegerExecute",
+    "displayName":"JsspITest_IntegerExecute",
+    "description":"JsspITest_IntegerExecute"
 };
 
 ondescribe = function() {
 	postSchema({
 		objects: {
-			"test1": {
-				displayName: "test1",
-				description: "test1description",
+			"JsspITest_Test1": {
+				displayName: "JsspITest_Test1",
+				description: "JsspITest_Test1.description",
 				properties: {
 					"Val1":{
 						displayName: "Val1",
@@ -47,7 +47,7 @@ ondescribe = function() {
 onexecute = function(objectname, methodname, parameters, properties) {
 	switch (objectname)
 	{
-		case "test1": onexecutetest1(methodname, parameters, properties); break;
+		case "JsspITest_Test1": onexecutetest1(methodname, parameters, properties); break;
 				default: throw new error("the object " + objectname + " is not supported.");
 	}
 }

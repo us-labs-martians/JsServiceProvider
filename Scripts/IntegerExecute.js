@@ -1,7 +1,7 @@
 metadata = {
     "systemName":"JsspITest_IntegerExecute",
-    "displayName":"JsspITest_IntegerExecute",
-    "description":"JsspITest_IntegerExecute"
+    "displayName":"JavaScript Service Provider Integer Execute Test",
+    "description":"This is for integration test purposes."
 };
 
 ondescribe = function() {

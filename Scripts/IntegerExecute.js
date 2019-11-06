@@ -1,7 +1,7 @@
 metadata = {
-    "systemName":"JsspITest_IntegerExecute",
-    "displayName":"JavaScript Service Provider Integer Execute Test",
-    "description":"This is for integration test purposes."
+	"systemName": "JsspITest_IntegerExecute",
+	"displayName": "JavaScript Service Provider Integer Execute Test",
+	"description": "This is for integration test purposes."
 };
 
 ondescribe = function() {
@@ -11,31 +11,64 @@ ondescribe = function() {
 				displayName: "JsspITest_Test1",
 				description: "JsspITest_Test1.description",
 				properties: {
-					"Val1":{
-						displayName: "Val1",
-						description: "value #1",
-						type: "number"
-					},
-					"Val2":{
-						displayName: "Val2",
-						description: "value #2",
-						type: "number"
-					},
-					"Value": {
-						displayName: "Value",
-						description: "return value",
-						type: "number"
-					}
+					"Val1":{ displayName: "Val1", description: "value #1", type: "number" },
+					"Val2":{ displayName: "Val2", description: "value #2", type: "number" },
+					"Val3":{ displayName: "Val3", description: "value #3", type: "number" },
+					"Val4":{ displayName: "Val4", description: "value #4", type: "number" },
+					"Val5":{ displayName: "Val5", description: "value #5", type: "number" },
+					"Val6":{ displayName: "Val6", description: "value #6", type: "number" },
+					"Val7":{ displayName: "Val7", description: "value #7", type: "number" },
+					"Val8":{ displayName: "Val8", description: "value #8", type: "number" },
+					"Val9":{ displayName: "Val9", description: "value #9", type: "number" },
+					"Value": { displayName: "Value", description: "return value", type: "number" }
 				},
 				methods: {
-					"Add": {
-						displayName: "Add",
-						description: "add",
+					"ReadAdd": {
+						displayName: "Read Add",
+						description: "Read add a bunch of numbers",
 						type: "read",
-						parameters: {},
-						requiredParameters: [],
-						inputs: ["Val1","Val2"],
-						requiredInputs: ["Val1","Val2"],
+						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						outputs: ["Value"]
+					},
+					"ListAdd": {
+						displayName: "List Add",
+						description: "List add a bunch of numbers",
+						type: "list",
+						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						outputs: ["Value"]
+					},
+					"ExecuteAdd": {
+						displayName: "Execute Add",
+						description: "Execute add a bunch of numbers",
+						type: "execute",
+						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						outputs: ["Value"]
+					},
+					"UpdateAdd": {
+						displayName: "Update Add",
+						description: "Update add a bunch of numbers",
+						type: "update",
+						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						outputs: ["Value"]
+					},
+					"DeleteAdd": {
+						displayName: "Delete Add",
+						description: "Delete add a bunch of numbers",
+						type: "delete",
+						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						outputs: ["Value"]
+					},
+					"CreateAdd": {
+						displayName: "Create Add",
+						description: "Create add a bunch of numbers",
+						type: "create",
+						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
+						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
 						outputs: ["Value"]
 					}
 				}
@@ -47,20 +80,33 @@ ondescribe = function() {
 onexecute = function(objectname, methodname, parameters, properties) {
 	switch (objectname)
 	{
-		case "JsspITest_Test1": onexecutetest1(methodname, parameters, properties); break;
-				default: throw new error("the object " + objectname + " is not supported.");
+		case "JsspITest_Test1": 
+			executeTest1(methodname, parameters, properties); 
+			break;
+		default: 
+			throw new error("the object " + objectname + " is not supported.");
 	}
 }
 
-function onexecutetest1(methodName, parameters, properties) {
+function executeTest1(methodName, parameters, properties) {
 	switch (methodName)
 	{
-		case "Add": onexecutetest1Add(parameters, properties); break;
+		case "ReadAdd": 
+		case "ListAdd": 
+		case "ExecuteAdd": 
+		case "UpdateAdd": 
+		case "DeleteAdd": 
+		case "CreateAdd": 
+			executeTest1Add(parameters, properties); 
+			break;
 		default: throw new Error("The method " + methodName + " is not supported.");
 	}
 }
 
-function onexecutetest1Add(parameters, properties) {
-	var Value = properties["Val1"] + properties["Val2"];
-	postResult({"Value": Value});
+function executeTest1Add(parameters, properties) {
+	var value = 0;
+	for (var i = 1; i < 10; i++) {
+		value += properties["Val" + i];
+		postResult({"Value": value});
+	}
 }

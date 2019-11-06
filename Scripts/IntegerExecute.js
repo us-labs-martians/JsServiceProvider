@@ -7,6 +7,20 @@ metadata = {
 ondescribe = function() {
 	postSchema({
 		objects: {
+			"JsspITest_InActive": {
+				displayName: "JsspITest_InActive",
+				description: "JsspITest_InActive.description",
+				isActive: false,
+				"Value": { displayName: "Value", description: "return value", type: "number" },
+				methods: {
+					"DummyMethod": {
+						displayName: "Dummy Method",
+						description: "Dummy Method description",
+						type: "read",
+						outputs: ["Value"]
+					}
+				}
+			},
 			"JsspITest_Test1": {
 				displayName: "JsspITest_Test1",
 				description: "JsspITest_Test1.description",
@@ -77,20 +91,35 @@ ondescribe = function() {
 	});
 }
 
-onexecute = function(objectname, methodname, parameters, properties) {
-	switch (objectname)
+onexecute = function(objectName, methodName, parameters, properties) {
+	switch (objectName)
 	{
-		case "JsspITest_Test1": 
-			executeTest1(methodname, parameters, properties); 
+		case "JsspITest_InActive":
+			executeInActive(methodName, parameters, properties);
+			break;
+		case "JsspITest_Test1":
+			executeTest1(methodName, parameters, properties); 
 			break;
 		default: 
-			throw new error("the object " + objectname + " is not supported.");
+			throw new error("the object " + objectName + " is not supported.");
 	}
 }
 
+function executeInActive(methodName, parameters, properties) {
+	switch (methodName) {
+		case "DummyMethod": 
+			executeDummyMethod(parameters, properties);
+			break;
+		default: throw new Error("The method " + methodName + " is not supported.");
+	}
+}
+
+function executeDummyMethod(parameters, properties) {
+	postResult({"Value": 1});
+}
+
 function executeTest1(methodName, parameters, properties) {
-	switch (methodName)
-	{
+	switch (methodName) {
 		case "ReadAdd": 
 		case "ListAdd": 
 		case "ExecuteAdd": 

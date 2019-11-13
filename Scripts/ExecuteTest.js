@@ -1,6 +1,6 @@
 metadata = {
-	"systemName": "JsspITest_IntegerExecute",
-	"displayName": "JavaScript Service Provider Integer Execute Test",
+	"systemName": "JsspITest_ExecuteTest",
+	"displayName": "JavaScript Service Provider Execute Test",
 	"description": "This is for integration test purposes."
 };
 

@@ -34,7 +34,10 @@ ondescribe = function() {
 					"Val7":{ displayName: "Val7", description: "value #7", type: "number" },
 					"Val8":{ displayName: "Val8", description: "value #8", type: "number" },
 					"Val9":{ displayName: "Val9", description: "value #9", type: "number" },
-					"Value": { displayName: "Value", description: "return value", type: "number" }
+					"Val10":{ displayName: "Val10", description: "bool value #1", type: "boolean"},
+					"Val11":{ displayName: "Val11", description: "bool value #2", type: "boolean"},
+					"Value": { displayName: "Value", description: "return value", type: "number" },
+					"Value2": { displayName: "Value2", description: "return value 2", type: "boolean" }
 				},
 				methods: {
 					"ReadAdd": {
@@ -84,6 +87,14 @@ ondescribe = function() {
 						inputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
 						requiredInputs: ["Val1", "Val2", "Val3", "Val4", "Val5", "Val6", "Val7", "Val8", "Val9"],
 						outputs: ["Value"]
+					},
+					"BooleanAnd":{
+						displayName: "Boolean And",
+						description: "Perform and on two booleans",
+						type: "execute",
+						inputs: ["Val10", "Val11"],
+						requiredInputs: ["Val10", "Val11"],
+						outputs: ["Value2"]
 					}
 				}
 			}
@@ -138,4 +149,9 @@ function executeTest1Add(parameters, properties) {
 		value += properties["Val" + i];
 		postResult({"Value": value});
 	}
+}
+
+function executeTest1And(parameters, properties) {
+    value = properties["Val10"] && properties["Val11"];
+    postResult({ "Value2": value });
 }

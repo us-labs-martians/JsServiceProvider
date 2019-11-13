@@ -139,6 +139,9 @@ function executeTest1(methodName, parameters, properties) {
 		case "CreateAdd": 
 			executeTest1Add(parameters, properties); 
 			break;
+		case "BooleanAnd":
+			executeTest1And(parameters, properties);
+			break;
 		default: throw new Error("The method " + methodName + " is not supported.");
 	}
 }

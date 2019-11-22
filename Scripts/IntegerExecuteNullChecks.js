@@ -7,7 +7,7 @@ metadata = {
 ondescribe = function () {
     postSchema({
         objects: {
-            "test1": {
+            "JsspIntegerExecuteNullCheckTest_test1": {
                 displayName: "test1",
                 description: "A fake object1",
                 version: "1",
@@ -49,22 +49,22 @@ ondescribe = function () {
 
 onexecute = function (objectname, methodname, parameters, properties) {
     switch (objectname) {
-        case "test1": onexecutetest1(methodname, parameters, properties); break;
+        case "JsspIntegerExecuteNullCheckTest_test1": onexecuteJsspIntegerExecuteNullCheckTest_test1(methodname, parameters, properties); break;
         default: throw new error("the object " + objectname + " is not supported.");
     }
 };
 
-function onexecutetest1(methodName, parameters, properties) {
+function onexecuteJsspIntegerExecuteNullCheckTest_test1(methodName, parameters, properties) {
     switch (methodName) {
         case "List":
         case "ListNoOutput":
-            onexecutetest1List(parameters, properties);
+            onexecuteJsspIntegerExecuteNullCheckTest_test1List(parameters, properties);
             break;
         default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
 
-function onexecutetest1List(parameters, properties) {
+function onexecuteJsspIntegerExecuteNullCheckTest_test1List(parameters, properties) {
     postResult({ "Value": undefined });
     postResult({ "Value": null });
     postResult({ "Value": 0 });

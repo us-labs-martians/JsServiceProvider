@@ -36,8 +36,11 @@ ondescribe = function() {
 					"Val9":{ displayName: "Val9", description: "value #9", type: "number" },
 					"Val10":{ displayName: "Val10", description: "bool value #1", type: "boolean"},
 					"Val11":{ displayName: "Val11", description: "bool value #2", type: "boolean"},
+					"Val12":{ displayName: "Val12", description: "string value #1", type: "string"},
+					"Val13":{ displayName: "Val13", description: "string value #2", type: "string"},
 					"Value": { displayName: "Value", description: "return value", type: "number" },
-					"Value2": { displayName: "Value2", description: "return value 2", type: "boolean" }
+					"Value2": { displayName: "Value2", description: "return value 2", type: "boolean" },
+					"Value3": { displayName: "Value3", description: "return value 3", type: "string" }
 				},
 				methods: {
 					"ReadAdd": {
@@ -95,6 +98,14 @@ ondescribe = function() {
 						inputs: ["Val10", "Val11"],
 						requiredInputs: ["Val10", "Val11"],
 						outputs: ["Value2"]
+					},
+					"StringConcat":{
+						displayName: "String Concat",
+						description: "Perform and on two booleans",
+						type: "execute",
+						inputs: ["Val12", "Val13"],
+						requiredInputs: ["Val12", "Val13"],
+						outputs: ["Value3"]
 					}
 				}
 			}
@@ -142,6 +153,9 @@ function executeTest1(methodName, parameters, properties) {
 		case "BooleanAnd":
 			executeTest1And(parameters, properties);
 			break;
+		case "StringConcat":
+			executeTest1StrConc(parameters, properties);
+			break;
 		default: throw new Error("The method " + methodName + " is not supported.");
 	}
 }
@@ -157,4 +171,9 @@ function executeTest1Add(parameters, properties) {
 function executeTest1And(parameters, properties) {
     value = properties["Val10"] && properties["Val11"];
     postResult({ "Value2": value });
+}
+
+function executeTest1StrConc(parameters, properties) {
+	value = properties["Val12"].concat(properties["Val13"]);
+    postResult({ "Value3": value });
 }

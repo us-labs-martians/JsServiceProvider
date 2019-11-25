@@ -106,6 +106,14 @@ ondescribe = function() {
 						inputs: ["Val12", "Val13"],
 						requiredInputs: ["Val12", "Val13"],
 						outputs: ["Value3"]
+					},
+					"Throw":{
+						displayName: "Throw",
+						description: "Perform and on two booleans",
+						type: "execute",
+						inputs: ["Val12", "Val13"],
+						requiredInputs: ["Val12", "Val13"],
+						outputs: ["Value3"]
 					}
 				}
 			}

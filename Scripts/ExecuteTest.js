@@ -114,6 +114,14 @@ ondescribe = function() {
 						inputs: ["Val12", "Val13"],
 						requiredInputs: ["Val12", "Val13"],
 						outputs: ["Value3"]
+					},
+					"ThrowAfterPost":{
+						displayName: "ThrowAfterPost",
+						description: "Perform and on two booleans",
+						type: "execute",
+						inputs: ["Val12", "Val13"],
+						requiredInputs: ["Val12", "Val13"],
+						outputs: ["Value3"]
 					}
 				}
 			}
@@ -164,6 +172,9 @@ function executeTest1(methodName, parameters, properties) {
 		case "StringConcat":
 			executeTest1StrConc(parameters, properties);
 			break;
+		case "ThrowAfterPost":
+			executeTest1ThrAftPost(parameters, properties);
+			break;
 		default: throw new Error("The method " + methodName + " is not supported.");
 	}
 }
@@ -184,4 +195,10 @@ function executeTest1And(parameters, properties) {
 function executeTest1StrConc(parameters, properties) {
 	value = properties["Val12"].concat(properties["Val13"]);
     postResult({ "Value3": value });
+}
+
+function executeTest1ThrAftPost(parameters, properties) {
+	value = properties["Val12"].concat(properties["Val13"]);
+    postResult({ "Value3": value });
+	throw new Error("thrown error");
 }

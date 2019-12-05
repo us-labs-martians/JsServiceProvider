@@ -122,6 +122,14 @@ ondescribe = function() {
 						inputs: ["Val12", "Val13"],
 						requiredInputs: ["Val12", "Val13"],
 						outputs: ["Value3"]
+					},
+                    "ThrowException": {
+						displayName: "ThrowException",
+						description: "Throws exception",
+						type: "execute",
+						inputs: ["Val12", "Val13"],
+						requiredInputs: ["Val12", "Val13"],
+						outputs: ["Value3"]
 					}
 				}
 			}
@@ -174,7 +182,10 @@ function executeTest1(methodName, parameters, properties) {
 			break;
 		case "ThrowAfterPost":
 			executeTest1ThrAftPost(parameters, properties);
-			break;
+            break;
+        case "ThrowException":
+            executeTestException(parameters, properties);
+            break;
 		default: throw new Error("The method " + methodName + " is not supported.");
 	}
 }
@@ -201,4 +212,9 @@ function executeTest1ThrAftPost(parameters, properties) {
 	value = properties["Val12"].concat(properties["Val13"]);
     postResult({ "Value3": value });
 	throw new Error("thrown error");
+}
+
+function executeTestException(parameters, properties) {
+    var test;
+    test.toString();
 }

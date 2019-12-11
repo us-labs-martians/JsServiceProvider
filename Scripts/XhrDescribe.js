@@ -1,4 +1,4 @@
-objects: {
+{
 	"object1": {
 		displayName: "OBJECT1",
 		description: "A fake object1",

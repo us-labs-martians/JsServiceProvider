@@ -38,9 +38,12 @@ ondescribe = function() {
 					"Val11":{ displayName: "Val11", description: "bool value #2", type: "boolean"},
 					"Val12":{ displayName: "Val12", description: "string value #1", type: "string"},
 					"Val13":{ displayName: "Val13", description: "string value #2", type: "string"},
+					"Val14":{ displayName: "Val14", description: "dateTime value #1", type: "dateTime"},
+					"Val15":{ displayName: "Val15", description: "dateTime value #2", type: "dateTime"},
 					"Value": { displayName: "Value", description: "return value", type: "number" },
 					"Value2": { displayName: "Value2", description: "return value 2", type: "boolean" },
-					"Value3": { displayName: "Value3", description: "return value 3", type: "string" }
+					"Value3": { displayName: "Value3", description: "return value 3", type: "string" },
+					"Value4": { displayName: "Value4", description: "return value 4", type: "dateTime" }
 				},
 				methods: {
 					"ReadAdd": {
@@ -106,6 +109,22 @@ ondescribe = function() {
 						inputs: ["Val12", "Val13"],
 						requiredInputs: ["Val12", "Val13"],
 						outputs: ["Value3"]
+					},
+					"DateTimeRead":{
+						displayName: "DateTime Read",
+						description: "Read a DateTime",
+						type: "execute",
+						inputs: ["Val14"],
+						requiredInputs: ["Val14"],
+						outputs: ["Value4"]
+					},
+					"DateTimeDiff":{
+						displayName: "Subtract Date To Number",
+						description: "Subtract two dates, return a number.",
+						type: "execute",
+						inputs: ["Val14","Val15"],
+						requiredInputs: [],
+						outputs: ["Value"]
 					},
 					"Throw":{
 						displayName: "Throw",
@@ -180,6 +199,12 @@ function executeTest1(methodName, parameters, properties) {
 		case "StringConcat":
 			executeTest1StrConc(parameters, properties);
 			break;
+		case "DateTimeRead":
+			executeTest1DateTimeRead(parameters, properties);
+			break;		
+		case "DateTimeDiff":
+			executeTest1DateTimeDiff(parameters, properties);
+			break;	
 		case "ThrowAfterPost":
 			executeTest1ThrAftPost(parameters, properties);
             break;
@@ -206,6 +231,16 @@ function executeTest1And(parameters, properties) {
 function executeTest1StrConc(parameters, properties) {
 	value = properties["Val12"].concat(properties["Val13"]);
     postResult({ "Value3": value });
+}
+
+function executeTest1DateTimeRead(parameters, properties) {
+	value = properties["Val14"];
+    postResult({ "Value4": value });
+}
+
+function executeTest1DateTimeDiff(parameters, properties) {
+	value = properties["Val14"] - properties["Val15"];
+	postResult({"Value": value});
 }
 
 function executeTest1ThrAftPost(parameters, properties) {

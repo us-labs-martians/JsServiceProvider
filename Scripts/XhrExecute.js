@@ -1,7 +1,7 @@
 var endpoint = "https://jsserviceprovider-itest-dev.azurewebsites.net/posts/";
 
 metadata = {
-	"systemName": "JsspITest_XHRExecute",
+	"systemName": "JsspITest_ExecuteXhrTest",
 	"displayName": "JavaScript Service Provider Execute XHR Test",
 	"description": "This is for integration test purposes."
 };

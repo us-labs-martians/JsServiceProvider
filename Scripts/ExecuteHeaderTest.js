@@ -1,5 +1,5 @@
 metadata = {
-	"systemName": "JsspITest_Header",
+	"systemName": "JsspITest_ExecuteHeaderTest",
 	"displayName": "JavaScript Service Provider Execute Header Test",
 	"description": "This is for integration test purposes."
 };

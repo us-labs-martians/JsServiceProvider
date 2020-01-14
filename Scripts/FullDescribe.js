@@ -11,7 +11,7 @@ ondescribe = function () {
                 displayName: "OBJECT1",
                 description: "A fake object1",
                 version: "1",
-                isActive: false,
+                isActive: true,
                 properties: {
                     "object1.prop1": {
                         displayName: "OBJECT1.PROP1",

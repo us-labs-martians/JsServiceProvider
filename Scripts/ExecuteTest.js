@@ -40,10 +40,13 @@ ondescribe = function() {
 					"Val13":{ displayName: "Val13", description: "string value #2", type: "string"},
 					"Val14":{ displayName: "Val14", description: "dateTime value #1", type: "dateTime"},
 					"Val15":{ displayName: "Val15", description: "dateTime value #2", type: "dateTime"},
+					"Val16":{ displayName: "Val16", description: "decimal value #1", type: "decimal"},
+					"Val17":{ displayName: "Val17", description: "decimal value #2", type: "decimal"},
 					"Value": { displayName: "Value", description: "return value", type: "number" },
 					"Value2": { displayName: "Value2", description: "return value 2", type: "boolean" },
 					"Value3": { displayName: "Value3", description: "return value 3", type: "string" },
-					"Value4": { displayName: "Value4", description: "return value 4", type: "dateTime" }
+					"Value4": { displayName: "Value4", description: "return value 4", type: "dateTime" },
+					"Value5": { displayName: "Value5", description: "return value 5", type: "decimal" }
 				},
 				methods: {
 					"ReadAdd": {
@@ -149,6 +152,14 @@ ondescribe = function() {
 						inputs: ["Val12", "Val13"],
 						requiredInputs: ["Val12", "Val13"],
 						outputs: ["Value3"]
+					},
+					"DecimalAdd": {
+						displayName: "DecimalAdd",
+						description: "Decimal add",
+						type: "execute",
+						inputs: ["Val16", "Val17"],
+						requiredInputs: ["Val16", "Val17"],
+						outputs: ["Value5"]
 					}
 				}
 			}
@@ -211,6 +222,9 @@ function executeTest1(methodName, parameters, properties) {
         case "ThrowException":
             executeTestException(parameters, properties);
             break;
+		case "DecimalAdd":
+			executeTestDecimalAdd(parameters, properties);
+			break;
 		default: throw new Error("The method " + methodName + " is not supported.");
 	}
 }
@@ -252,4 +266,9 @@ function executeTest1ThrAftPost(parameters, properties) {
 function executeTestException(parameters, properties) {
     var test;
     test.toString();
+}
+
+function executeTestDecimalAdd(parameters, properties) {
+	value = properties["Val16"] + properties["Val17"]
+	postResult({"Value5": value});
 }

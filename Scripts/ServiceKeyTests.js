@@ -5,7 +5,7 @@ metadata = {
     keys: {
         "com.k2.itest.id": {
             displayName: "ID",
-            type: "object"
+            type: "string"
         },
         "com.k2.itest.userId": {
             displayName: "User ID",

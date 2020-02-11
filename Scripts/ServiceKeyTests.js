@@ -2,7 +2,7 @@ metadata = {
     systemName: "JsspITest_ServiceKeyTest",
     displayName: "JavaScript Service Provider Service Key Test",
     description: "This is for integration test purposes.",
-    keys: {
+    configuration: {
         "com.k2.itest.id": {
             displayName: "ID",
             type: "string"

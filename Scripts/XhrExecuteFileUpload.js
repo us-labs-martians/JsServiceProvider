@@ -23,8 +23,8 @@
             displayName: "UploadAndDownloadFile",
             description: "Uploads file and downloads the same file back",
             type: "read",
-            inputs: ["img1"],
-            requiredInputs: ["img1"],
+            inputs: ["file1"],
+            requiredInputs: ["file1"],
             outputs: ["fileResult"]
            },
           "UploadAndDownloadImage": {

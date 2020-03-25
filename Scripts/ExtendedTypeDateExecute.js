@@ -17,7 +17,7 @@ ondescribe = function () {
                 },
                 methods: {
                     "ExecuteDateParams": {
-                        displayName: "ExecuteDateParams",
+                        displayName: "Execute Params",
                         description: "Execute Read method with Params",
                         type: "read",
                         parameters: {
@@ -27,7 +27,7 @@ ondescribe = function () {
                         outputs: ["propDate1"]
                     },
                   "ExecuteDateAndDateTimeParams": {
-                      displayName: "ExecuteDateParams",
+                      displayName: "Execute Multile Params",
                       description: "Execute Read method with Multiple Params",
                       type: "read",
                       parameters: {
@@ -38,17 +38,11 @@ ondescribe = function () {
                       outputs: ["propDate1", "propDateTime"]
                     },
                     "ExecuteDateProps": {
-                        displayName: "ExecuteDateProps",
+                        displayName: "Execute Props",
                         description: "Execute Read method with Properties Only",
                         type: "read",
                         inputs: [ "propDate2"],
                         requiredInputs: ["propDate2"],
-                        outputs: ["propDate1"]
-                    },
-                    "ExecuteDateDefault": {
-                        displayName: "ExecuteDateDefault",
-                        description: "Execute Read method with Default date",
-                        type: "read",
                         outputs: ["propDate1"]
                     }
                 }
@@ -77,10 +71,7 @@ function executeTest1(methodName, parameters, properties) {
             break;
         case "ExecuteDateProps":
             executeDateProps(parameters, properties);
-            break;
-        case "ExecuteDateDefault":
-            executeDateDefault();
-            break;
+            break;  
         default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
@@ -91,15 +82,11 @@ function executeDateParams(parameters, properties) {
 }
 
 function executeDateAndDateTimeParams(parameters, properties) {
-    postResult({ "propDate1": parameters["paramDate1"], "propDateTime": parameters["paramDateTime2"]});
+  postResult({ "propDate1": parameters["paramDate1"], "propDateTime": parameters["paramDateTime2"]});
 }
 
 function executeDateProps(parameters, properties) {
     value = properties["propDate2"];
     postResult({ "propDate1": value});
-}
-
-function executeDateDefault() {
-    postResult({ "propDate1": new Date() });
 }
 

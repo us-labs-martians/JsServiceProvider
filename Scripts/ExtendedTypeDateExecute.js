@@ -13,7 +13,8 @@ ondescribe = function () {
                 properties: {
                     "propDate1": { displayName: "propDate1", type: "extendedDateTime", extendedType: "k2.com/2019/date" },
                     "propDate2": { displayName: "propDate2", type: "extendedDateTime", extendedType: "k2.com/2019/date" },
-                    "propDateTime": { displayName: "propDateTime", type: "dateTime" }
+                    "propDateTime": { displayName: "propDateTime", type: "dateTime" },
+					"propNullDate": { displayName: "propDateTime", type: "dateTime" }
                 },
                 methods: {
                     "ExecuteDateParams": {
@@ -44,6 +45,22 @@ ondescribe = function () {
                         inputs: [ "propDate2"],
                         requiredInputs: ["propDate2"],
                         outputs: ["propDate1"]
+                    },
+					"ExecuteDateAndDateTimeOptional": {
+                      displayName: "Execute Optinal Params",
+                      description: "Execute Read method with Optional Params",
+                      type: "read",
+                      parameters: {
+                        "paramDate1": { displayName: "paramDate1", type: "extendedDateTime", extendedType: "k2.com/2019/date" },
+                        "paramDateTime2": { displayName: "paramDateTime2",  type: "dateTime" }
+                      },
+                      outputs: ["propDate1", "propDateTime"]
+                    },
+					"ExecuteNanDate": {
+                      displayName: "Execute Nan Date",
+                      description: "Execute Read method with NaN",
+                      type: "read",
+                      outputs: ["propNullDate"]
                     }
                 }
             }
@@ -72,6 +89,12 @@ function executeTest1(methodName, parameters, properties) {
         case "ExecuteDateProps":
             executeDateProps(parameters, properties);
             break;  
+		case "ExecuteDateAndDateTimeOptional":
+			executeDateOptional(parameters, properties);
+            break; 
+		case "ExecuteNanDate":
+			executeDateNaN(parameters, properties);
+            break; 
         default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
@@ -90,3 +113,11 @@ function executeDateProps(parameters, properties) {
     postResult({ "propDate1": value});
 }
 
+function executeDateOptional(parameters, properties) {
+	postResult({ "propDate1": parameters["paramDate1"], "propDateTime": parameters["paramDateTime2"]});
+}
+
+function executeDateNaN(parameters, properties) {
+	var value = Date.parse("");
+	postResult({"propNullDate": value});
+}

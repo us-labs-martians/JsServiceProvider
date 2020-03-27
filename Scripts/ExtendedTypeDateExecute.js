@@ -61,7 +61,13 @@ ondescribe = function () {
                       description: "Execute Read method with NaN",
                       type: "read",
                       outputs: ["propNullDate"]
-                    }
+                    },
+					"ExecuteDateDefault": {
+                        displayName: "ExecuteDateDefault",
+                        description: "Execute Read method with Default date",
+                        type: "read",
+                        outputs: ["propDate1"]
+					}
                 }
             }
         }
@@ -95,6 +101,9 @@ function executeTest1(methodName, parameters, properties) {
 		case "ExecuteNanDate":
 			executeDateNaN(parameters, properties);
             break; 
+		case "ExecuteDateDefault":
+            executeDateDefault();
+            break;
         default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
@@ -120,4 +129,8 @@ function executeDateOptional(parameters, properties) {
 function executeDateNaN(parameters, properties) {
 	var value = Date.parse("");
 	postResult({"propNullDate": value});
+}
+
+function executeDateDefault() {
+    postResult({ "propDate1": new Date() });
 }

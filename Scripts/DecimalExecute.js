@@ -37,7 +37,7 @@ ondescribe = function () {
   });
 }
 
-onexecute = function (objectName, methodName, parameters, properties) {
+onexecute = function ({objectName, methodName, parameters, properties}) {
   switch (objectName) {
     case "JsspITest_Test1":
       executeTest1(methodName, parameters, properties);

@@ -24,7 +24,7 @@ metadata = {
     }
 };
 
-ondescribe = function(configuration) {
+ondescribe = function({configuration}) {
     postSchema({
         objects: {
             "com.k2.itest": {
@@ -67,7 +67,7 @@ ondescribe = function(configuration) {
     });
 }
 
-onexecute = function(objectName, methodName, parameters, properties, configuration) {
+onexecute = function({objectName, methodName, parameters, properties, configuration}) {
     switch (objectName)
     {
         case "com.k2.itest": onexecuteTodo(methodName, parameters, properties, configuration); break;

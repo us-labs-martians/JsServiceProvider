@@ -51,7 +51,7 @@
    });
  };
 
- onexecute = function (objectName, methodName, parameters, properties) {
+ onexecute = function ({objectName, methodName, parameters, properties}) {
    switch (objectName) {
      case "JsspITest_Test1":
        executeXHRTest(methodName, parameters, properties);

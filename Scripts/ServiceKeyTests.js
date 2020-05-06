@@ -67,7 +67,7 @@ ondescribe = function(configuration) {
     });
 }
 
-onexecute = function(objectName, methodName, parameters, properties, configuration) {
+onexecute = function({objectName, methodName, parameters, properties, configuration}) {
     switch (objectName)
     {
         case "com.k2.itest": onexecuteTodo(methodName, parameters, properties, configuration); break;

@@ -47,10 +47,10 @@ ondescribe = function () {
     });
 }
 
-onexecute = function (objectname, methodname, parameters, properties) {
-    switch (objectname) {
-        case "JsspIntegerExecuteNullCheckTest_test1": onexecuteJsspIntegerExecuteNullCheckTest_test1(methodname, parameters, properties); break;
-        default: throw new error("the object " + objectname + " is not supported.");
+onexecute = function ({objectName, methodName, parameters, properties}) {
+    switch (objectName) {
+        case "JsspIntegerExecuteNullCheckTest_test1": onexecuteJsspIntegerExecuteNullCheckTest_test1(methodName, parameters, properties); break;
+        default: throw new error("the object " + objectName + " is not supported.");
     }
 };
 
